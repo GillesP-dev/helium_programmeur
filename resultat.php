@@ -1,6 +1,10 @@
 <?php
 
 if (isset($_POST['user_name']) && isset($_POST['user_income'])&&isset($_POST['user_donation']) && isset($_POST['user_works'])) {
+    if (empty($_POST['user_name']) || empty($_POST['user_income']) || empty($_POST['user_donation']) || empty($_POST['user_works'])) {  
+    exit("Veuillez remplir tous les champs ou mettre 0.");
+
+}
     $user_name = $_POST['user_name'];
     $user_income = $_POST['user_income'];
     $user_donation = $_POST['user_donation'];
@@ -26,7 +30,7 @@ if (isset($_POST['user_name']) && isset($_POST['user_income'])&&isset($_POST['us
     //calcule de l'impot finale
     
         $calculateIncome = $user_income*0.15;
-        var_dump($calculateIncome);
+       
         if($user_income>15000){ 
          $calculateIncome= $calculateIncome + (($user_income-15000)*0.20);
         }
@@ -42,8 +46,7 @@ if (isset($_POST['user_name']) && isset($_POST['user_income'])&&isset($_POST['us
 
 
     
-} else {
-    
-    echo "Veuillez remplir tous les champs ou mettre 0.";
+
+  
 };
 ?>
